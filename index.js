@@ -14,9 +14,14 @@ app.use( fileUpload() );
 app.get('*', function(req, res){
     res.send("hello")
 });
-mongoose.connect("mongodb+srv://SadeenAlaa:sa987654321@cluster0.fed6m.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority", { useNewUrlParser: true ,  useFindAndModify: false })
-        .then(() => {console.log('mongooDB connected')})
-        .catch(() => console.error("Database Connection Error !!"));
+const uri = "mongodb+srv://SadeenAlaa:sa987654321@cluster0.fed6m.gcp.mongodb.net/Cluster0?retryWrites=true&w=majority";
+const MongoClient = require('mongodb').MongoClient;
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
 const db_conn = mongoose.connection;
 
 app.listen(port, () => {});
