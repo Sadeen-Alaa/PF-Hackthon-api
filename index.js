@@ -14,7 +14,7 @@ app.use( fileUpload() );
 app.get('*', function(req, res){
     res.send("hello")
 });
-mongoose.connect("mongodb+srv://SadeenAlaa:<password>@cluster0.fed6m.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority", { useNewUrlParser: true ,  useFindAndModify: false })
+mongoose.connect("mongodb+srv://SadeenAlaa:sa987654321@cluster0.fed6m.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority", { useNewUrlParser: true ,  useFindAndModify: false })
         .then(() => {console.log('mongooDB connected')})
         .catch(() => console.error("Database Connection Error !!"));
 const db_conn = mongoose.connection;
